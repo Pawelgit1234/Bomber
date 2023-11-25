@@ -7,7 +7,7 @@ from email_bomber import EmailBomber
 
 
 def main():
-
+	email_bomber = EmailBomber(os.environ["RECEIVER_EMAIL"], "Hello World")
 
 
 if __name__ == '__main__':

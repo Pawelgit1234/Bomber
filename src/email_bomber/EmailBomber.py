@@ -24,7 +24,7 @@ class EmailBomber(Bomber):
 		finally:
 			self.server.quit()
 
-	def start_DDOS_bombing(self):
+	def start_DDOS_bombing(self, email_and_passwords: list):
 		pass
 
 	def send(self, sender_email: str):

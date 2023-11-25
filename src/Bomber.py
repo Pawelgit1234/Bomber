@@ -7,7 +7,6 @@ class Bomber(ABC):
 		self.receiver = receiver
 		self.min_interval, = min_interval,
 		self.max_interval = max_interval
-		self.server = None
 
 	@abstractmethod
 	def start_bombing(self):
