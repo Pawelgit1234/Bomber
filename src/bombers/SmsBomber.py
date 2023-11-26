@@ -1,0 +1,3 @@
+
+class SmsBomber:
+	pass
