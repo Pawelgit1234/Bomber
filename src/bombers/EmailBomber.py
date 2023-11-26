@@ -9,7 +9,7 @@ from email.header import Header
 
 
 class EmailBomber:
-	def __init__(self, receiver_email: str, subject: str, msg: str, is_html=False, pdf_attachment=None, min_interval=600, max_interval=600):
+	def __init__(self, receiver_email: str, subject: str, msg: str | list, is_html=False, pdf_attachment=None, min_interval=600, max_interval=600):
 		self.receiver_email = receiver_email
 		self.msg = msg
 		self.subject = subject
@@ -43,8 +43,10 @@ class EmailBomber:
 	def send(self, sender_email: str, sender_email_password: str):
 		if self.is_html:
 			message = MIMEMultipart()
-			message.attach(MIMEText(self.msg, 'html', 'utf-8'))
+			message.attach(MIMEText(self.msg if isinstance(self.msg, str) else self.msg[random.randint(0, len(self.msg))], 'html', 'utf-8'))
 		else:
+			if isinstance(self.msg, list):
+				self.msg = ''.join(self.msg)
 			message = MIMEText(self.msg, 'plain', 'utf-8')
 
 		message['From'] = Header(sender_email, 'utf-8')
