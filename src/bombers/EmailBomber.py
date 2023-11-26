@@ -45,9 +45,7 @@ class EmailBomber:
 			message = MIMEMultipart()
 			message.attach(MIMEText(self.msg if isinstance(self.msg, str) else self.msg[random.randint(0, len(self.msg))], 'html', 'utf-8'))
 		else:
-			if isinstance(self.msg, list):
-				self.msg = ''.join(self.msg)
-			message = MIMEText(self.msg, 'plain', 'utf-8')
+			message = MIMEText(self.msg if isinstance(self.msg, str) else self.msg[random.randint(0, len(self.msg))], 'plain', 'utf-8')
 
 		message['From'] = Header(sender_email, 'utf-8')
 		message['To'] = Header(self.receiver_email, 'utf-8')
