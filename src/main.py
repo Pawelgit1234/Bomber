@@ -7,11 +7,9 @@ import json
 from bombers import EmailBomber
 
 
-from twilio.rest import Client
-
 
 def main():
-	email_bomber = EmailBomber(os.environ["RECEIVER_EMAIL"], "Привет мир", msg="Hello", min_interval=5, max_interval=5)
+	email_bomber = EmailBomber(os.environ["RECEIVER_EMAIL"], "Hello", msg="Hello", min_interval=5, max_interval=5)
 	email_bomber.start_bombing(os.environ['SENDER_EMAIL'], os.environ['SENDER_EMAIL_PASSWORD'])
 
 
